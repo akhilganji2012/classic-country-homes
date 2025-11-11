@@ -1,0 +1,75 @@
+/* Global smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* .parallax {
+
+  background-image: url('img_parallax.jpg');
+
+  height: 100%;
+
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+*/
+
+/* Parallax sections */
+.parallax-section {
+  position: relative;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: white;
+  text-align: center;
+}
+
+.parallax-bg {
+  background-color: yellow ;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  filter: brightness(70%);
+}
+
+.parallax-content {
+  z-index: 1;
+  background: rgba(0,0,0,0.4);
+  padding: 2rem 3rem;
+  border-radius: 12px;
+}
+
+/* .hero .parallax-bg {
+  background-image: url('/assets/images/hero-bg.jpg');
+} */
+
+.content-section {
+  padding: 3rem 2rem;
+  background: #f5f5f5;
+}
+
+.event-card {
+  margin: 1rem 0;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}

@@ -1,0 +1,16 @@
+
+<div class="dialog-container">
+  <button class="close-btn" mat-icon-button (click)="closeDialog()">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <button class="nav-btn left" mat-icon-button (click)="prevImage()">
+    <mat-icon>chevron_left</mat-icon>
+  </button>
+
+  <img [src]="currentImage" class="full-image" />
+
+  <button class="nav-btn right" mat-icon-button (click)="nextImage()">
+    <mat-icon>chevron_right</mat-icon>
+  </button>
+</div>

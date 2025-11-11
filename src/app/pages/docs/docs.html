@@ -1,0 +1,43 @@
+<div class="upload-wrapper" *ngIf="user?.role === 'admin'">
+  <mat-card class="upload-card"
+            (click)="fileInput.click()"
+            (drop)="onDrop($event)"
+            (dragover)="allowDrop($event)">
+    <div class="upload-box" (click)="fileInput.click()">
+      <mat-icon class="upload-icon">upload_file</mat-icon>
+      <p>Drag and drop PDF here <br> or click to browse</p>
+      <input #fileInput type="file" accept="application/pdf" hidden (change)="onFileChange($event)" />
+    </div>
+  </mat-card>
+
+  <div *ngIf="uploading" class="upload-progress">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+    <p>Uploading...</p>
+  </div>
+</div>
+<h3 class="info">Uploaded Documents</h3>
+
+<!-- PDF List -->
+<div class="pdf-list">
+
+  <mat-card *ngFor="let pdf of pdfs" class="pdf-card">
+    <mat-icon class="delete-icon" *ngIf="user?.role === 'admin'" (click)="deletePdf($event, pdf)">delete</mat-icon>
+    <div class="pdf-body" (click)="openViewer(pdf)">
+      <mat-icon class="pdf-icon">picture_as_pdf</mat-icon>
+      <div class="pdf-info">
+        <strong>{{ pdf.name }}</strong>
+        <small>Uploaded: {{ pdf.createdAt | date: 'short' }}</small>
+      </div>
+    </div>
+  </mat-card>
+</div>
+
+<!-- PDF Modal (Secure viewer) -->
+<div class="viewer-overlay" *ngIf="selectedPdfUrl" (contextmenu)="$event.preventDefault()">
+  <mat-icon class="close-btn" (click)="closeViewer()">close</mat-icon>
+
+  <iframe
+    [src]="selectedPdfUrl | safePdf"
+    class="pdf-frame">
+  </iframe>
+</div>

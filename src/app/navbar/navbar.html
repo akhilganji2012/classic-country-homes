@@ -1,0 +1,44 @@
+<mat-toolbar color="primary" class="toolbar">
+  <span class="brand">Classic Country Homes</span>
+  <span class="spacer"></span>
+
+  <!-- Desktop Nav -->
+  <div class="desktop-nav">
+    <a mat-button routerLink="/">Home</a>
+    <a mat-button routerLink="/gallery">Gallery</a>
+    <a mat-button routerLink="/docs">Docs</a>
+    <a mat-button routerLink="/register">Register</a>
+
+    <button mat-button *ngIf="!user" routerLink="/login">Login</button>
+
+    <button mat-button *ngIf="user" [matMenuTriggerFor]="userMenu">
+      {{ user.fullName || user.email }}
+    </button>
+  </div>
+
+  <!-- Mobile Menu Button -->
+  <button mat-icon-button class="mobile-menu-btn" [matMenuTriggerFor]="mobileMenu">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+
+<!-- Desktop User Menu -->
+<mat-menu #userMenu="matMenu">
+  <button mat-menu-item routerLink="/admin" *ngIf="user?.role === 'admin'">Admin</button>
+  <button mat-menu-item (click)="logout()">Logout</button>
+</mat-menu>
+
+<!-- Mobile Menu -->
+<mat-menu #mobileMenu="matMenu">
+  <button mat-menu-item routerLink="/">Home</button>
+  <button mat-menu-item routerLink="/gallery">Gallery</button>
+  <button mat-menu-item routerLink="/docs">Docs</button>
+  <button mat-menu-item routerLink="/register">Register</button>
+
+  <button mat-menu-item *ngIf="!user" routerLink="/login">Login</button>
+
+  <button mat-menu-item routerLink="/admin" *ngIf="user?.role === 'admin'">
+    Admin
+  </button>
+  <button mat-menu-item *ngIf="user" (click)="logout()">Logout</button>
+</mat-menu>

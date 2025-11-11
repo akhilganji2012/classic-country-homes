@@ -1,0 +1,28 @@
+<section class="parallax-section hero">
+  <div class="parallax-bg" appParallax [ratio]="0.3"></div>
+  <div class="parallax-content">
+    <h1>Classic Country Homes</h1>
+    <p>Connecting all plot owners and forming a vibrant community.</p>
+    <button mat-raised-button color="accent" routerLink="/register">Join Now</button>
+  </div>
+</section>
+
+<section class="parallax-section about">
+  <div class="parallax-bg" appParallax [ratio]="0.2"></div>
+  <div class="parallax-content">
+    <h2>About Our Community</h2>
+    <p>We bring together plot owners to share events, photos, and experiences.</p>
+  </div>
+</section>
+
+<section class="content-section" id="events">
+  <h2>Upcoming Events</h2>
+  <div *ngFor="let event of events" class="event-card">
+    <mat-card>
+      <mat-card-title>{{ event.title }}</mat-card-title>
+      <mat-card-content>{{ event.description }}</mat-card-content>
+      <mat-card-subtitle>{{ event.date | date }}</mat-card-subtitle>
+    </mat-card>
+  </div>
+</section>
+

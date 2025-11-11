@@ -1,0 +1,17 @@
+<mat-card>
+  <h3>Login</h3>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <mat-form-field class="full">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+    </mat-form-field>
+
+    <mat-form-field class="full">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password" />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="loading">Login</button>
+    <mat-progress-spinner *ngIf="loading" diameter="24" mode="indeterminate"></mat-progress-spinner>
+  </form>
+</mat-card>

@@ -1,0 +1,32 @@
+<mat-card>
+  <h2>Pending Registrations</h2>
+  <div *ngIf="pending.length === 0">No pending registrations.</div>
+  <mat-list>
+    <mat-list-item *ngFor="let p of pending">
+      <div mat-line><strong>{{ p.fullName }}</strong> — {{ p.email }} (Plot: {{ p.plot }})</div>
+      <div class="actions">
+        <button mat-button color="primary" (click)="approve(p.id)">Approve</button>
+        <button mat-button color="warn" (click)="reject(p.id)">Reject</button>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</mat-card>
+
+
+<mat-card>
+  <h2>🛠 Pending Image Moderation</h2>
+
+  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+  <div class="grid">
+    <mat-grid-list cols="3" rowHeight="200px" gutterSize="8px">
+      <mat-grid-tile *ngFor="let img of pendingImages">
+        <img [src]="img.url" class="img" />
+        <mat-grid-tile-footer>
+          <button mat-mini-button color="primary" (click)="approveImage(img)">Approve</button>
+          <button mat-mini-button color="warn" (click)="deleteImage(img)">Delete</button>
+        </mat-grid-tile-footer>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</mat-card>

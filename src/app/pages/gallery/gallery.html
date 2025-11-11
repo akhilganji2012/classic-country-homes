@@ -1,0 +1,27 @@
+<mat-card>
+  <h2>Community Gallery</h2>
+
+  <mat-card class="upload-card"
+  (click)="fileInput.click()"
+  (drop)="onDrop($event)"
+  (dragover)="allowDrop($event)">
+    <div class="upload-box" (click)="fileInput.click()">
+    <mat-icon class="upload-icon">upload_file</mat-icon>
+    <p>Drag and drop Image here <br> or click to browse</p>
+    <input #fileInput type="file" hidden (change)="onFileChange($event)" />
+    </div>
+  </mat-card>
+
+  <div class="grid">
+    <mat-grid-list cols="3" rowHeight="200px" gutterSize="8px">
+      @for (img of approvedImages; track img; let i = $index) {
+      <mat-grid-tile (click)="openImage(i)">
+        <img [src]="img.url" style="width:100%; height:100%; object-fit:cover" />
+        <mat-grid-tile-footer *ngIf="isAdmin">
+          <button mat-mini-button color="warn" (click)="deleteImage(img)">Delete</button>
+        </mat-grid-tile-footer>
+      </mat-grid-tile>
+    }
+    </mat-grid-list>
+  </div>
+</mat-card>

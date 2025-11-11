@@ -1,0 +1,6 @@
+.full { width: 100%; display: block; margin-bottom: 12px; }
+mat-card { padding: 16px; max-width: 600px; margin: 24px auto; }
+
+.field{
+  margin: 1rem;
+}
